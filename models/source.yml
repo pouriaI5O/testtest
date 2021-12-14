@@ -1,0 +1,13 @@
+version: 2
+
+sources: 
+  - name: public
+    description: A Redshift database
+    database: deeplens
+    tables:
+      - name: matrix_scan_events_prod
+        description: main table for cran tacking
+        loaded_at_field: scannedate
+        freshness: 
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 48, period: hour}
